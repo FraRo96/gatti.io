@@ -25,7 +25,6 @@ public class Spawner : MonoBehaviour
 
     public GameObject AllyPrefab;
     public GameObject AllyPrefabGO;
-    public GameObject SpawnArea;
 
     public DotsNavPlane Plane;
 
@@ -67,7 +66,7 @@ public class Spawner : MonoBehaviour
         bool positioned = false;
         int nTries = 0;
         int maxTries = 100;
-        Collider2D[] overlaps;
+        Collider[] overlaps;
         float3 position;
 
         while (!positioned && nTries < maxTries)
@@ -79,9 +78,9 @@ public class Spawner : MonoBehaviour
                 UnityEngine.Random.Range(downZ, upZ)
                 );
 
-            overlaps = Physics2D.OverlapCircleAll(new Vector2(position.x, position.z), radius);
+            overlaps = Physics.OverlapSphere(new Vector3(position.x, 6, position.z), radius);
 
-            if (overlaps.Length <= 1) // always overlaps with the plane
+            if (overlaps.Length <= 0) // always overlaps with the plane
             {
                 obj.transform.position = position;
                 positioned = true;
@@ -90,8 +89,6 @@ public class Spawner : MonoBehaviour
             else
             {
                 nTries += 1;
-                Debug.Log(overlaps[0].gameObject.name);
-                Debug.Log(overlaps[1].gameObject.name);
             }
         }
 
