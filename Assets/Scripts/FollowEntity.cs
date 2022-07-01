@@ -10,12 +10,15 @@ using UnityEngine.SceneManagement;
 public class FollowEntity : MonoBehaviour
 {
     public Entity EntityToFollow;
-    public GameObject Followed;
+    public GameObject FollowVisualEffect;
     public float3 offset;
 
     private EntityManager _entityManager;
 
     private Animator _animator;
+
+    [SerializeField]
+    private bool _isFollowing;
 
     void Start()
     {
@@ -27,7 +30,18 @@ public class FollowEntity : MonoBehaviour
     {
         if (_entityManager.Exists(EntityToFollow))
         {
-            if (_entityManager.GetComponentData<IsFollowingData>(EntityToFollow).Value)
+            if (!_isFollowing)
+            {
+                _isFollowing = _entityManager.GetComponentData<IsFollowingData>(EntityToFollow).Value;
+                if (_isFollowing)
+                {
+                    if (FollowVisualEffect != null)
+                    {
+                        var vfx = Instantiate(FollowVisualEffect, transform.position, Quaternion.identity);
+                    }
+                }
+            }
+            else
             {
                 _animator.SetBool("isRunning", true);
                 Translation entityPosition = _entityManager.GetComponentData<Translation>(EntityToFollow);

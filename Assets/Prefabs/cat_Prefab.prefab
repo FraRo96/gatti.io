@@ -1193,7 +1193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617eaac36f881dc4083434a46ab67aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Followed: {fileID: 0}
+  FollowVisualEffect: {fileID: 6142858720933755175, guid: 86d79f7e47d4044439d2ad7f03fc8a8e, type: 3}
   offset:
     x: 0
     y: 0
