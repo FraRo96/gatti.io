@@ -15,7 +15,7 @@ partial class MovementSystem : SystemBase
         var deltaTime = Time.DeltaTime;
         Entities
             .WithBurst()
-            .WithAny<AllyTag, EnemyTag, ImmortalAllyTag>()
+            .WithAny<AllyTag, ImmortalAllyTag>()
             .ForEach((
                       Entity e,
                       ref Translation translation,
@@ -24,7 +24,7 @@ partial class MovementSystem : SystemBase
                       in IsFollowingData isFollowing
                      ) =>
             {
-                if (isFollowing.Value || HasComponent<EnemyTag>(e))
+                if (isFollowing.Value)
                 {
                     translation.Value += velocity.WorldSpace * deltaTime;
                 }               

@@ -19,9 +19,8 @@ partial class PreferredVelocitySystem : SystemBase
     {
         Entities
             .WithBurst()
-            .WithAny<AllyTag, EnemyTag, ImmortalAllyTag>()
+            .WithAny<AllyTag, ImmortalAllyTag>()
             .ForEach((
-                      Entity e,
                       ref Translation translation,
                       ref PreferredVelocityComponent preferredVelocity,
                       in DirectionComponent direction,
@@ -30,7 +29,7 @@ partial class PreferredVelocitySystem : SystemBase
                       in IsFollowingData isFollowing
                      ) =>
             {
-                if (isFollowing.Value || HasComponent<EnemyTag>(e))
+                if (isFollowing.Value)
                 {
                     var dist = math.length(query.To - translation.Value);
                     var speed = math.min(dist * steering.BrakeSpeed, steering.PreferredSpeed);

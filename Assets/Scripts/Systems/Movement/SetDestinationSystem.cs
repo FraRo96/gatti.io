@@ -38,7 +38,7 @@ public partial class SetDestinationSystem : SystemBase
             Dependency =
                 Entities
                     .WithBurst()
-                    .WithAny<AllyTag, EnemyTag, ImmortalAllyTag>()
+                    .WithAny<AllyTag, ImmortalAllyTag>()
                     .ForEach((
                               ref PathQueryComponent query,
                               in IsSavedData isSaved,

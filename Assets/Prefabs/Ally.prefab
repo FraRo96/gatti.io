@@ -163,8 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719a252b6f08363438d15420d82d361e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PreferredSpeed: 10
-  BrakeSpeed: 7
+  PreferredSpeed: 50
+  BrakeSpeed: 35
 --- !u!114 &878694968879000128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552bc7f1ad57e1843a3296465b08295b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Value: 2
+  Value: 1.8
 --- !u!114 &2315135241822997776
 MonoBehaviour:
   m_ObjectHideFlags: 0
